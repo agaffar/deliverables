@@ -34,9 +34,9 @@
                             if (response.status == "ok") {
                                 console.log(response)
                                 vm.courses = response.data;
-
+                                var coursesList = checkAvailability(vm.courses);
                                 params.total(response.pagination.total);
-                                var filterObj = params.filter(), filteredData = $filter('filter')(vm.courses, filterObj);
+                                var filterObj = params.filter(), filteredData = $filter('filter')(coursesList, filterObj);
 
                                 var sortObj = params.sorting(), orderedData = $filter('orderBy')(filteredData, filterObj);
                                 vm.data = orderedData;
@@ -54,6 +54,19 @@
                 }
 
             });
+        }
+        function checkAvailability(courses){
+
+            for(var i = 0;i< courses.length;i++){
+                var eachCourse =  courses[i];
+                eachCourse.availableSeats = 0;
+                for(var j=0;j<eachCourse.courseSlots.length;j++){
+                    var slot = eachCourse.courseSlots[j];
+                    console.log(eachCourse.courseSlots[j])
+                    eachCourse.availableSeats = eachCourse.availableSeats + eachCourse.courseSlots[j].availableSlots;
+                }
+            }
+            return courses;
         }
         function enrollStudent(course){
 

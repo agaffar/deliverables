@@ -10,7 +10,8 @@
             <ul>
 
                 <li ng-repeat="slots in ec.course.courseSlots">
-                    <input type="radio" value="slots.timeSlot" ng-model="slots.selected" ng-disabled="slots.availableSlots==0">
+                    <input type="radio" ng-value="slots.timeSlot" name="slotsSelected"
+                           ng-model="ec.selectedSlot" ng-disabled="slots.availableSlots==0" >
                     <span ng-bind="slots.timeSlot"></span><br>
                 </li>
             </ul>
@@ -32,7 +33,7 @@
                 <label for="emailId">Email Id</label>
                 <input type="email" name="lname" id="emailId" ng-model="ec.emailId" minlength="1" ng-keyup="ec.checkStudentExist()" maxlength="500" required>
                 <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
-                <span style="color:red" ng-if="studAlreadEnrolled">You are already enrolled. Only one course per user</span>
+                <span style="color:red" ng-if="ec.studAlreadEnrolled">You are already enrolled. Only one course per user</span>
             </div><br>
             <input type="submit" value="enroll">
         </form>

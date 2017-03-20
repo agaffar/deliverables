@@ -37,6 +37,7 @@
             query.timeSlotSelectedId = getSelectedTimeSlot(vm.course.courseSlots);
             query.courseId = courseId;
             console.log(query);
+            console.log(vm.selectedSlot);
             courseFactory.enrollStudent(query).then(function(response){
                     if(response.status == "ok"){
                         alert("you are enrolled succesfully");
@@ -67,7 +68,7 @@
             var slotId = "";
             console.log(courseSlots);
             for(var i =0;i<courseSlots.length;i++){
-                if(courseSlots[i].selected == true){
+                if(courseSlots[i].timeSlot == vm.selectedSlot){
                     return courseSlots[i]._id;
                 }
             }

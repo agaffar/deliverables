@@ -164,17 +164,24 @@ function studentExists(req,res){
 
     console.log(req.query);
     console.log(req.body);
-    studentModel.findOne({email : query.emailId}).populate('course')
-        .exec(function(err, response){
+    studentModel.findOne({email : query.emailId}).populate('course').exec(function(err, response){
             if(err){
-                console.log(err);
+
                 res.send(new errorResponse("error","no query formed properly",err));
+                console.log(err);
             }
             else{
                 console.log("response");
-                console.log(response);
-                var data = response;
-                res.send(new successResponse("ok",data,{},"success"));
+                if(response != undefined && response != null)
+                {
+                    console.log(response);
+                    var data = response;
+                    res.send(new successResponse("ok",data,{},"success"));
+                }
+                else {
+                    res.send(new errorResponse("error","no data found properly",err));
+                }
+
             }
         });
 
