@@ -87,16 +87,24 @@ function enrollStudent(req,res){
                     console.log(err1);
                     res.send(new errorResponse("error","somehing went wrong",err1));
                 }else {
+                    if(response != undefined && response != null){
                         response.availableSlots = response.availableSlots -1;
                         response.save(function(err2){
                             if(err2)
                             {
-                                console.log(err2);
+
                                 res.send(new errorResponse("error","somehing went wrong",err2));
+                                console.log(err2);
                             }else {
                                 res.send(new successResponse("ok","valid",{},"success fully enrolled"));
                             }
                         })
+                    }else {
+                        console.log(err1);
+                        res.send(new errorResponse("error","somehing went wrong",err1));
+                        console.log(err1);
+                    }
+
                 }
             })
         }

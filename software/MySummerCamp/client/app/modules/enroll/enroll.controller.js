@@ -4,8 +4,8 @@
 (function(){
     'use strict'
     angular.module('sumCamp.enroll').controller('enrollController',enrollController);
-    enrollController.$inject = ['$scope','courseFactory','$stateParams','$state'];
-    function enrollController($scope,courseFactory,$stateParams,$state){
+    enrollController.$inject = ['$scope','courseFactory','$stateParams','$state','$window'];
+    function enrollController($scope,courseFactory,$stateParams,$state,$window){
         var vm = this;
         vm.enrollStudent = enrollStudent;
         vm.checkStudentExist = checkStudentExist;
@@ -34,19 +34,32 @@
             query.studentFirstName = vm.fname;
             query.studentLastName = vm.lname;
             query.studentEmailId = vm.emailId;
-            query.timeSlotSelectedId = getSelectedTimeSlot(vm.course.courseSlots);
-            query.courseId = courseId;
-            console.log(query);
-            console.log(vm.selectedSlot);
-            courseFactory.enrollStudent(query).then(function(response){
-                    if(response.status == "ok"){
-                        alert("you are enrolled succesfully");
-                        $state.go('home');
-                    }
-            },
-            function(data){
+            if(checkStudentExist(query.studentEmailId)){
+                $window.alert("you are already registered for another course");
+            }
+            else {
+                if(vm.selectedSlot == undefined || vm.selectedSlot ==null){
+                    $window.alert("select any slot available for you");
 
-            });
+                }
+                else {
+                    query.timeSlotSelectedId = getSelectedTimeSlot(vm.course.courseSlots);
+                    query.courseId = courseId;
+                    console.log(query);
+                    console.log(vm.selectedSlot);
+                    courseFactory.enrollStudent(query).then(function(response){
+                            if(response.status == "ok"){
+                                alert("you are enrolled succesfully");
+                                $state.go('home');
+                            }
+                        },
+                        function(data){
+
+                        });
+                }
+
+            }
+
         }
         function checkStudentExist(){
                 var query = {};
