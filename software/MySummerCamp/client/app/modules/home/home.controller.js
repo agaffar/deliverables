@@ -36,8 +36,10 @@
                                 vm.courses = response.data;
                                 var coursesList = checkAvailability(vm.courses);
                                 params.total(response.pagination.total);
-                                var filterObj = params.filter(), filteredData = $filter('filter')(coursesList, filterObj);
+                                console.log(coursesList);
 
+                                var filterObj = params.filter(), filteredData = $filter('filter')(coursesList, filterObj);
+                                console.log(filteredData);
                                 var sortObj = params.sorting(), orderedData = $filter('orderBy')(filteredData, filterObj);
                                 vm.data = orderedData;
                                 //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
