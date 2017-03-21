@@ -2,9 +2,12 @@
     <h2>Thank you shopping at BuyProduct</h2>
     <center>
         <div class="bill-details-div">
-            <div class="row"><label class="col-md-2">Total Products</label><span class="col-md-2" ng-bind="bd.totalProducts"></span></div>
-            <div class="row"><label class="col-md-2">Total Cost </label><span class="col-md-2" ng-bind="bd.total"></span></div>
-            <div class="row"><label class="col-md-2">Purchased By</label><span class="col-md-2" ng-bind="bd.purchasedBy"></span></div>
+            <div class="row"><label class="col-md-2">Total Products</label>
+                <span class="col-md-2" ng-bind="bd.totalProducts"></span></div>
+            <div class="row"><label class="col-md-2">Total Cost </label>
+                <span class="col-md-2"ng-bind="bd.total| currency:'&#8377;'"></span></div>
+            <div class="row"><label class="col-md-2">Purchased By</label>
+                <span class="col-md-2" ng-bind="bd.purchasedBy "></span></div>
         </div>
 
     </center>
