@@ -7,10 +7,10 @@
     enrollController.$inject = ['$scope','courseFactory','$stateParams','$state','$window'];
     function enrollController($scope,courseFactory,$stateParams,$state,$window){
         var vm = this;
+        var courseId = $stateParams.courseId;
         vm.enrollStudent = enrollStudent;
         vm.checkStudentExist = checkStudentExist;
         //TODO: fix comment: Initialization of variables first, method declaration next, then method definition
-        var courseId = $stateParams.courseId;
         getCourseDetails(courseId);
         vm.uncheck = function (slots) {
             console.log("slotssss")
