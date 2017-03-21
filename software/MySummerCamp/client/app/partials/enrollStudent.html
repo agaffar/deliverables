@@ -1,41 +1,43 @@
 <div class="row">
+    <h2>Enroll Here</h2>
+    <br>
     <center>
         <form class="course-form" name="enrollForm" ng-submit="ec.enrollStudent()">
-            <label>Course Name: </label><span ng-bind="ec.course.courseName"></span><br>
-            <label>Course Description: </label><span ng-bind="ec.course.description"></span><br>
-            <label>Course Duration: </label><span ng-bind="ec.course.duration"></span><br>
-            <label>Course Coach: </label><span ng-bind="ec.course.coach"></span><br>
-            <label>Course Fees: </label><span ng-bind="ec.course.courseFee"></span><br>
-            <label>Course Slots: </label><br>
-            <ul>
+            <div class="row"><label class="col-md-4">Course Name: </label><span class="col-md-4" ng-bind="ec.course.courseName"></span></div><br>
+            <div class="row"> <label class="col-md-4">Course Description: </label><span class="col-md-4" ng-bind="ec.course.description"></span></div><br>
+            <div class="row"><label class="col-md-4">Course Duration: </label><span class="col-md-4" ng-bind="ec.course.duration"></span></div><br>
+            <div class="row"><label class="col-md-4">Course Coach: </label><span class="col-md-4" ng-bind="ec.course.coach"></span></div><br>
+            <div class="row"><label class="col-md-4">Course Fees: </label><span class="col-md-4" ng-bind="ec.course.courseFee"></span></div><br>
+            <div class="row"> <label class="col-md-4">Course Slots: </label><br>
+                <ul>
 
-                <li ng-repeat="slots in ec.course.courseSlots">
-                    <input  type="radio" ng-value="slots.timeSlot" name="slotsSelected"
-                           ng-model="ec.selectedSlot" ng-disabled="slots.availableSlots==0" >
-                    <span ng-bind="slots.timeSlot"></span><br>
-                </li>
-            </ul>
+                    <li class="col-md-1" ng-repeat="slots in ec.course.courseSlots">
+                        <input  type="radio" ng-value="slots.timeSlot" name="slotsSelected"
+                                ng-model="ec.selectedSlot" ng-disabled="slots.availableSlots==0" >
+                        <span ng-bind="slots.timeSlot"></span><br>
+                    </li>
+                </ul>
+                </div>
+                <div class="row form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
 
-            <div class="form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
-
-                <label for="fname">Student First Name</label>
-                <input class="form-control" type="text" name="fname" id="fname" ng-model="ec.fname" minlength="1" maxlength="500" required>
-                <span style="color:red" ng-show="enrollForm.fname.$dirty && enrollForm.fname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
-            </div><br>
-            <div class="form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
-
-            <label for="lname">Student Last Name</label>
-            <input class="form-control" type="text" name="lname" id="lname" ng-model="ec.lname" minlength="1" maxlength="500" required>
-            <span style="color:red" ng-show="enrollForm.lname.$dirty && enrollForm.lname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
+                    <label class="col-md-4" for="fname">Student First Name</label>
+                    <input class="col-md-4 form-control" type="text" name="fname" id="fname" ng-model="ec.fname" minlength="1" maxlength="500" required>
+                    <span style="color:red" ng-show="enrollForm.fname.$dirty && enrollForm.fname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
                 </div><br>
-            <div class="form-group" ng-class="{ 'has-error': enrollForm.emailId.$dirty && enrollForm.emailId.$error.required }">
+                <div class="row form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
 
-                <label for="emailId">Email Id</label>
-                <input class="form-control" type="email" name="lname" id="emailId" ng-model="ec.emailId" minlength="1" ng-blur="ec.checkStudentExist()" ng-keyup="ec.checkStudentExist()" maxlength="500" required>
-                <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
-                <span style="color:red" ng-if="ec.studAlreadEnrolled">You are already enrolled. Only one course per user</span>
-            </div><br>
-            <input type="submit" class="btn btn-success" value="enroll" ng-disabled="ec.studAlreadEnrolled == true || enrollForm.$invalid">
+                    <label class="col-md-4" for="lname">Student Last Name</label>
+                    <input class="col-md-4 form-control" type="text" name="lname" id="lname" ng-model="ec.lname" minlength="1" maxlength="500" required>
+                    <span style="color:red" ng-show="enrollForm.lname.$dirty && enrollForm.lname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
+                </div><br>
+                <div class="row form-group" ng-class="{ 'has-error': enrollForm.emailId.$dirty && enrollForm.emailId.$error.required }">
+
+                    <label class="col-md-4" for="emailId">Email Id</label>
+                    <input class="col-md-4 form-control" type="email" name="lname" id="emailId" ng-model="ec.emailId" minlength="1" ng-blur="ec.checkStudentExist()" ng-keyup="ec.checkStudentExist()" maxlength="500" required>
+                    <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
+                    <span style="color:red" ng-if="ec.studAlreadEnrolled">You are already enrolled. Only one course per user</span>
+                </div><br>
+                <input type="submit" class="btn btn-success" value="enroll" ng-disabled="ec.studAlreadEnrolled == true || enrollForm.$invalid">
         </form>
 
     </center>

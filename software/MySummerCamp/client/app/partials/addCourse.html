@@ -1,46 +1,48 @@
 <div class="row">
+    <h2>Add your course Here</h2>
+    <br>
     <center>
         <form class="course-form" name="courseForm" ng-submit="acc.CreateCourse(courseForm.$valid)">
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cName.$dirty && courseForm.cName.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cName.$dirty && courseForm.cName.$error.required }">
 
-                <label for="cName">Course Name </label>
-                <input class="form-control" type="text" name="cName"  id="cName" ng-model="acc.cname" minlength="1" maxlength="12" required>
+                <label class="col-md-4"  for="cName">Course Name </label>
+                <input class="col-md-4 form-control" type="text" name="cName"  id="cName" ng-model="acc.cname" minlength="1" maxlength="12" required>
                 <span style="color:red" ng-show="courseForm.cName.$dirty && courseForm.cName.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cdesc.$dirty && courseForm.cdesc.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cdesc.$dirty && courseForm.cdesc.$error.required }">
 
-                <label for="cdesc">Course Description </label>
-                <input class="form-control" type="text" name="cdesc" id="cdesc" ng-model="acc.cdesc" minlength="20" maxlength="500" required>
+                <label class="col-md-4" for="cdesc">Course Description </label>
+                <input class="col-md-4 form-control" type="text" name="cdesc" id="cdesc" ng-model="acc.cdesc" minlength="20" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.cdesc.$dirty && courseForm.cdesc.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cduration.$dirty && courseForm.cduration.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cduration.$dirty && courseForm.cduration.$error.required }">
 
-                <label for="cduration">Duration </label>
-                <input class="form-control" type="text" name="cduration" id="cduration" ng-model="acc.cduration" minlength="1" maxlength="500" required>
+                <label class="col-md-4" for="cduration">Duration </label>
+                <input class="col-md-4 form-control" type="text" name="cduration" id="cduration" ng-model="acc.cduration" minlength="1" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.cduration.$dirty && courseForm.cduration.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cNoDays.$dirty && courseForm.cNoDays.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cNoDays.$dirty && courseForm.cNoDays.$error.required }">
 
-                <label for="cNoDays">No of Days </label>
-                <input class="form-control" type="text" name="cNoDays" id="cNoDays" ng-model="acc.cNoDays" minlength="1" maxlength="500" required>
+                <label class="col-md-4" for="cNoDays">No of Days </label>
+                <input class="col-md-4 form-control" type="text" name="cNoDays" id="cNoDays" ng-model="acc.cNoDays" minlength="1" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.cNoDays.$dirty && courseForm.cNoDays.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cCoach.$dirty && courseForm.cCoach.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cCoach.$dirty && courseForm.cCoach.$error.required }">
 
-                <label for="cCoach">Coach </label>
-                <input class="form-control" type="text" name="cCoach" id="cCoach" ng-model="acc.cCoach" minlength="5" maxlength="500" required>
+                <label class="col-md-4" for="cCoach">Coach </label>
+                <input class="col-md-4 form-control" type="text" name="cCoach" id="cCoach" ng-model="acc.cCoach" minlength="5" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.cCoach.$dirty && courseForm.cCoach.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.cfees.$dirty && courseForm.cfees.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.cfees.$dirty && courseForm.cfees.$error.required }">
 
-                <label for="cfees">Course Fees</label>
-                <input class="form-control" type="text" name="cfees" id="cfees" ng-model="acc.cfees" minlength="1" maxlength="500" required>
+                <label class="col-md-4" for="cfees">Course Fees</label>
+                <input class="col-md-4 form-control" type="text" name="cfees" id="cfees" ng-model="acc.cfees" minlength="1" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.cfees.$dirty && courseForm.cfees.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': courseForm.noStud.$dirty && courseForm.noStud.$error.required }">
+            <div class="row form-group" ng-class="{ 'has-error': courseForm.noStud.$dirty && courseForm.noStud.$error.required }">
 
-                <label for="noStud">Number of students per slot</label>
-                <input class="form-control" type="text" name="noStud" id="noStud" ng-model="acc.noStud" minlength="1" maxlength="500" required>
+                <label class="col-md-4" for="noStud">Number of students per slot</label>
+                <input class="col-md-4 form-control" type="text" name="noStud" id="noStud" ng-model="acc.noStud" minlength="1" maxlength="500" required>
                 <span style="color:red" ng-show="courseForm.noStud.$dirty && courseForm.noStud.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div>
             <ul>
