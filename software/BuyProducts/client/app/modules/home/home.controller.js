@@ -14,7 +14,6 @@
         vm.addProduct = addProduct;
         vm.updateCost = updateCost;
         vm.proceedPay = proceedPay;
-        console.log("in home");
         function refreshProds(valueEntered){
             vm.productList = [];
 
@@ -91,10 +90,10 @@
                         var billId = response.data;
                         $state.go('billDetails',{"billId" : billId });
                     }
-            },
-            function(data){
+                },
+                function(data){
 
-            });
+                });
         }
     }
 

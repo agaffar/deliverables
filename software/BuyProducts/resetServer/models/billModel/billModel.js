@@ -13,7 +13,7 @@ var billSchema = new Schema({
             required : true
         },
         purchasedOn :{
-            type : String,
+            type : Date,
             required : true
         },
         items:[{

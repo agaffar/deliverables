@@ -2,7 +2,7 @@
  * Created by SB004 on 3/21/2017.
  */
 (function(){
-'use strict'
+    'use strict'
     angular.module('buyProd.home').factory('homeFactory',homeFactory);
     homeFactory.$inject = ['$http','api'];
     function homeFactory($http,api){

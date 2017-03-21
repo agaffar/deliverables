@@ -22,3 +22,7 @@ div.bill-details{
 div.bill-details h2{
     color : orange;
 }
+div.bill-details-div
+{
+    text-align: center;
+}
