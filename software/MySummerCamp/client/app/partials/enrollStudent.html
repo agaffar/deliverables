@@ -1,6 +1,6 @@
 <div class="row">
     <center>
-        <form name="enrollForm" ng-submit="ec.enrollStudent()">
+        <form class="course-form" name="enrollForm" ng-submit="ec.enrollStudent()">
             <label>Course Name: </label><span ng-bind="ec.course.courseName"></span><br>
             <label>Course Description: </label><span ng-bind="ec.course.description"></span><br>
             <label>Course Duration: </label><span ng-bind="ec.course.duration"></span><br>
@@ -10,7 +10,7 @@
             <ul>
 
                 <li ng-repeat="slots in ec.course.courseSlots">
-                    <input type="radio" ng-value="slots.timeSlot" name="slotsSelected"
+                    <input  type="radio" ng-value="slots.timeSlot" name="slotsSelected"
                            ng-model="ec.selectedSlot" ng-disabled="slots.availableSlots==0" >
                     <span ng-bind="slots.timeSlot"></span><br>
                 </li>
@@ -19,23 +19,23 @@
             <div class="form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
 
                 <label for="fname">Student First Name</label>
-                <input type="text" name="fname" id="fname" ng-model="ec.fname" minlength="1" maxlength="500" required>
+                <input class="form-control" type="text" name="fname" id="fname" ng-model="ec.fname" minlength="1" maxlength="500" required>
                 <span style="color:red" ng-show="enrollForm.fname.$dirty && enrollForm.fname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
             </div><br>
             <div class="form-group" ng-class="{ 'has-error': enrollForm.fname.$dirty && enrollForm.fname.$error.required }">
 
             <label for="lname">Student Last Name</label>
-            <input type="text" name="lname" id="lname" ng-model="ec.lname" minlength="1" maxlength="500" required>
+            <input class="form-control" type="text" name="lname" id="lname" ng-model="ec.lname" minlength="1" maxlength="500" required>
             <span style="color:red" ng-show="enrollForm.lname.$dirty && enrollForm.lname.$error.minlength" ng-class="help-block">minimum length should be 10</span>
                 </div><br>
             <div class="form-group" ng-class="{ 'has-error': enrollForm.emailId.$dirty && enrollForm.emailId.$error.required }">
 
                 <label for="emailId">Email Id</label>
-                <input type="email" name="lname" id="emailId" ng-model="ec.emailId" minlength="1" ng-keyup="ec.checkStudentExist()" maxlength="500" required>
+                <input class="form-control" type="email" name="lname" id="emailId" ng-model="ec.emailId" minlength="1" ng-blur="ec.checkStudentExist()" ng-keyup="ec.checkStudentExist()" maxlength="500" required>
                 <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
                 <span style="color:red" ng-if="ec.studAlreadEnrolled">You are already enrolled. Only one course per user</span>
             </div><br>
-            <input type="submit" value="enroll" ng-disabled="ec.studAlreadEnrolled == true">
+            <input type="submit" class="btn btn-success" value="enroll" ng-disabled="ec.studAlreadEnrolled == true || enrollForm.$invalid">
         </form>
 
     </center>

@@ -37,7 +37,7 @@ function createCourse(req,res){
      query.noOfDays = vm.cNoDays;
      query.coach = vm.cCoach;
      query.noStud = vm.noStud;
-    * */
+     * */
     courseObject.courseName = query.courseName;
     courseObject.description = query.description;
     courseObject.courseName = query.courseName;
@@ -184,34 +184,34 @@ function studentExists(req,res){
     console.log(req.query);
     console.log(req.body);
     studentModel.findOne({email : query.emailId}).populate('course').exec(function(err, response){
-            if(err){
+        if(err){
 
-                res.send(new errorResponse("error","no query formed properly",err));
-                console.log(err);
+            res.send(new errorResponse("error","no query formed properly",err));
+            console.log(err);
+        }
+        else{
+            console.log("response");
+            if(response != undefined && response != null)
+            {
+                console.log(response);
+                var data = response;
+                res.send(new successResponse("ok",data,{},"success"));
             }
-            else{
-                console.log("response");
-                if(response != undefined && response != null)
-                {
-                    console.log(response);
-                    var data = response;
-                    res.send(new successResponse("ok",data,{},"success"));
-                }
-                else {
-                    res.send(new errorResponse("error","no data found properly",err));
-                }
+            else {
+                res.send(new errorResponse("error","no data found properly",err));
+            }
 
-            }
-        });
+        }
+    });
 
 
 }
 function insertSlot(courseObject,eachSlot,noStuds){
-        var defered = Q.defer();
-        var courseSlotObject = new courseSlotModel();
-        courseSlotObject.timeSlot = eachSlot.time;
-        courseSlotObject.availableSlots = noStuds;
-        courseSlotObject.noOfStudents = noStuds;
+    var defered = Q.defer();
+    var courseSlotObject = new courseSlotModel();
+    courseSlotObject.timeSlot = eachSlot.time;
+    courseSlotObject.availableSlots = noStuds;
+    courseSlotObject.noOfStudents = noStuds;
     courseSlotObject.save(function(err){
         if(err){
             console.log(err);
