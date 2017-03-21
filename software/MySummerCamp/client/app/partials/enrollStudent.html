@@ -35,7 +35,7 @@
                 <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
                 <span style="color:red" ng-if="ec.studAlreadEnrolled">You are already enrolled. Only one course per user</span>
             </div><br>
-            <input type="submit" value="enroll">
+            <input type="submit" value="enroll" ng-disabled="ec.studAlreadEnrolled == true">
         </form>
 
     </center>
