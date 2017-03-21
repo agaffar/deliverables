@@ -15,7 +15,7 @@
         </ui-select>
         <span>{{ hc.selected.name}}</span>
     </div>
-    <button class="btn btn-primary glyphicon-plus-sign" ng-click="hc.addProduct(hc.selected)">Add</button>
+    <button class="btn btn-primary glyphicon glyphicon-plus-sign" ng-click="hc.addProduct(hc.selected)">Add</button>
     <br>
     <br>
 
@@ -56,7 +56,8 @@
             </tbody>
 
         </table>
-        <button class="btn btn-success glyphicon-credit-card" value="Proceed to Pay" ng-click="hc.proceedPay()" ng-disabled="hc.yourOrders.length == 0"></button>
+        <button class="btn btn-success glyphicon glyphicon-credit-card" ng-click="hc.proceedPay()"
+                ng-disabled="hc.yourOrders.length == 0">Proceed to Pay</button>
 
     </div>
 </div>
