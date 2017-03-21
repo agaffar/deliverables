@@ -121,7 +121,7 @@ function getCourses(req,res){
 
     console.log(req.query);
     console.log(req.body);
-    courseModel.find({}).populate('courseSlots').skip(query.numberToSkip).limit(query.limitTo)
+    courseModel.find({}).sort(query.sortingCriteria).populate('courseSlots').skip(query.numberToSkip).limit(query.limitTo)
         .exec(function(err, response){
             if(err){
                 console.log(err);
