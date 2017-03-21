@@ -121,18 +121,29 @@ function getCourses(req,res){
 
     console.log(req.query);
     console.log(req.body);
-    courseModel.find({}).populate({path : 'courseSlots',options: {
-            skip : query.numberToSkip, limit : query.limitTo, sort: query.sortingCriteria }})
+    courseModel.find({}).populate('courseSlots').skip(query.numberToSkip).limit(query.limitTo)
         .exec(function(err, response){
             if(err){
                 console.log(err);
                 res.send(new errorResponse("error","no query formed properly",err));
             }
             else{
-                console.log("response");
-                console.log(response);
-                var data = response;
-                res.send(new successResponse("ok",data,{},"success"));
+                courseModel.find({}).populate('courseSlots')
+                    .exec(function(err1, response1){
+                        if(err1){
+                            console.log(err);
+                            res.send(new errorResponse("error","no query formed properly",err));
+                        }
+                        else {
+                            console.log("response");
+                            console.log(response);
+                            var data = response;
+                            var pagination = {};
+                            pagination.total = response1.length;
+                            res.send(new successResponse("ok",data,pagination,"success"));
+                        }
+                    });
+
             }
         });
 

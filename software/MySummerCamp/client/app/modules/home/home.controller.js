@@ -62,7 +62,7 @@
                 eachCourse.availableSeats = 0;
                 for(var j=0;j<eachCourse.courseSlots.length;j++){
                     var slot = eachCourse.courseSlots[j];
-                    console.log(eachCourse.courseSlots[j])
+                    //console.log(eachCourse.courseSlots[j])
                     eachCourse.availableSeats = eachCourse.availableSeats + eachCourse.courseSlots[j].availableSlots;
                 }
             }
