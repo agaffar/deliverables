@@ -5,7 +5,7 @@
  * Created by SB004 on 3/20/2017.
  */
 (function(){
-    angular.module('sumCamp').config(navConfig);
+    angular.module('buyProd').config(navConfig);
     navConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
     function navConfig($stateProvider, $urlRouterProvider, $locationProvider)
     {
@@ -17,11 +17,11 @@
             templateUrl: '/partials/homePage.html'
 
         });
-        $stateProvider.state('addCourse', {
-            url:"/addCourse",
-            controller: 'addCourseController',
-            controllerAs: 'acc',
-            templateUrl: '/partials/addCourse.html'
+        $stateProvider.state('billDetails', {
+            url:"/billDetails:billId",
+            controller: 'billDetailsController',
+            controllerAs: 'bd',
+            templateUrl: '/partials/billDetails.html'
 
         });
         $stateProvider.state('enrollStudent', {

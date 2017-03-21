@@ -1,0 +1,127 @@
+[
+  {
+    "name" : "colgate",
+    "category" : "Paste",
+    "price" : 60
+  },
+  {
+    "name" : "closeup",
+    "category" : "Paste",
+    "price" : 50
+  },
+  {
+    "name" : "meswak",
+    "category" : "Paste",
+    "price" : 70
+  },
+  {
+    "name" : "aayush",
+    "category" : "Paste",
+    "price" : 55
+  },
+  {
+    "name" : "babool",
+    "category" : "Paste",
+    "price" : 40
+  },
+  {
+    "name" : "naturalle",
+    "category" : "Oil",
+    "price" : 100
+  },
+  {
+    "name" : "fortune",
+    "category" : "Oil",
+    "price" : 115
+  },
+  {
+    "name" : "freedom",
+    "category" : "Oil",
+    "price" : 109
+  },
+  {
+    "name" : "gold drop",
+    "category" : "Oil",
+    "price" : 99
+  },
+  {
+    "name" : "sungift",
+    "category" : "Oil",
+    "price" : 120
+  },
+  {
+    "name" : "panteen",
+    "category" : "Shampoo",
+    "price" : 150
+  },
+  {
+    "name" : "clinic all clear",
+    "category" : "Shampoo",
+    "price" : 80
+  },
+  {
+    "name" : "head and shoulders",
+    "category" : "Shampoo",
+    "price" : 90
+  },
+  {
+    "name" : "meera",
+    "category" : "Shampoo",
+    "price" : 110
+  },
+  {
+    "name" : "pathanjali",
+    "category" : "Shampoo",
+    "price" : 60
+  },
+  {
+    "name" : "santoor",
+    "category" : "Soap",
+    "price" : 30
+  },
+  {
+    "name" : "mysore sandal",
+    "category" : "Soap",
+    "price" : 50
+  },
+  {
+    "name" : "dove",
+    "category" : "Soap",
+    "price" : 60
+  },
+  {
+    "name" : "lux",
+    "category" : "Soap",
+    "price" : 35
+  },
+  {
+    "name" : "park avenue",
+    "category" : "Soap",
+    "price" : 70
+  },
+  {
+    "name" : "coco cola",
+    "category" : "CoolDrinks",
+    "price" : 80
+  },
+  {
+    "name" : "thumsup",
+    "category" : "CoolDrinks",
+    "price" : 80
+  },
+  {
+    "name" : "pepsi",
+    "category" : "CoolDrinks",
+    "price" : 80
+  },
+  {
+    "name" : "maaza",
+    "category" : "CoolDrinks",
+    "price" : 80
+  },
+  {
+    "name" : "mountain dew",
+    "category" : "CoolDrinks",
+    "price" : 80
+  }
+]

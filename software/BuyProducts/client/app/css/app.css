@@ -1,0 +1,24 @@
+div.header{
+    height: 10%;
+    background-color: lightblue;
+}
+div.footer{
+    height: 5%;
+    background-color: #0d3349;
+    color: white;
+    padding: 1em;
+    clear: left;
+    text-align: center;
+}
+
+div.view-content{
+    margin-top : 5px;
+    padding-top: 2%;
+    margin-bottom: 3%;
+}
+div.bill-details{
+    text-align: center;
+}
+div.bill-details h2{
+    color : orange;
+}

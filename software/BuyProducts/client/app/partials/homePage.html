@@ -1,3 +1,62 @@
 <div class="row">
-<p>home page</p>
+    <p>home page</p>
+    <div class="search" >
+        <!--{{search.productList}}-->
+        <ui-select ng-model="hc.selected" theme='bootstrap' reset-search-input='true' on-select="">
+            <ui-select-match placeholder="Select or search a product ..." > {{ $select.selected.name}}</ui-select-match>
+            <!--minimum-input-length=3 check in future-->
+            <ui-select-choices  refresh="hc.refreshProds({selected : $select.search})"
+                                refresh-delay="0"
+                                repeat="prod in hc.productList track by prod.name" >
+                <a ui-sref="product({ id : prod.name })" >{{prod.name}}</a><br>
+                Cost:{{prod.price | currency:'&#8377;'}}
+                Category: <span ng-bind="prod.category" ></span>
+            </ui-select-choices>
+        </ui-select>
+        <span>{{ hc.selected.name}}</span>
+    </div>
+    <button class="btn btn-primary glyphicon-plus-sign" ng-click="hc.addProduct(hc.selected)">Add</button>
+    <br>
+    <br>
+
+    <div class="list-products" ng-if="hc.yourOrders.length>0">
+        <p>List of products in your order</p>
+
+        <table ng-table="hc.tableParams"  show-filter="true" class = "table table-bordered">
+            <tbody>
+
+            <tr ng-repeat="item in $data"> <!--{{readR1}}-->
+                <td title="'product'" filter="{ productName: 'text'}" sortable="'productName'"><span ng-bind="item.productName">{{course}} </span>
+                </td>
+                <td title="'Quantity'" filter="{ quantity: 'number'}" sortable="'quantity'">
+                    <select  ng-model="item.quantity" ng-change="hc.updateCost(item)">
+                        <option selected="selected" value="{{item.quantity}}">{{item.quantity}}</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td title="'Total'" filter="{ total: 'number'}" sortable="'total'"><span ng-bind="item.totalCost" ></span></td>
+
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    Total
+                </td>
+                <td>
+                    <span ng-bind="hc.totalBill"></span>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+        <button class="btn btn-success glyphicon-credit-card" value="Proceed to Pay" ng-click="hc.proceedPay()" ng-disabled="hc.yourOrders.length == 0"></button>
+
+    </div>
 </div>
