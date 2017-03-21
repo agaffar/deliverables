@@ -9,6 +9,7 @@
         var vm = this;
         vm.enrollStudent = enrollStudent;
         vm.checkStudentExist = checkStudentExist;
+        //TODO: fix comment: Initialization of variables first, method declaration next, then method definition
         var courseId = $stateParams.courseId;
         getCourseDetails(courseId);
         vm.uncheck = function (slots) {
@@ -35,9 +36,11 @@
             query.studentLastName = vm.lname;
             query.studentEmailId = vm.emailId;
             if(checkStudentExist(query.studentEmailId)){
+                //TODO: fix comment: Going forward you should not use window alerts
                 $window.alert("you are already registered for another course");
             }
             else {
+                //TODO: fix comment: Samething at client end too. Write a utility method to check null-safe
                 if(vm.selectedSlot == undefined || vm.selectedSlot ==null){
                     $window.alert("select any slot available for you");
 
@@ -77,6 +80,7 @@
 
             });
         }
+        //TODO: fix comment: In general this should be in utility method, like getObjectByKey(couseSlots, 'KEY=timeSlot', objectToCompare...)
         function getSelectedTimeSlot(courseSlots){
             var slotId = "";
             console.log(courseSlots);

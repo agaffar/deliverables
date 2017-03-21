@@ -5,6 +5,9 @@
  * Created by SB004 on 3/9/2017.
  */
 
+
+//TODO: fix comment: The below all methods are service methods. So this implementation should be in ***.service.js file, not in util file
+// Util js file should contain all kind of utility methods(Like plain operations which does not deal with database)
 var express = require('express');
 var courseModel = require('../models/CourseModel/courseModel');
 var courseSlotModel = require('../models/courseSlotModel/CourseSlotModel');
@@ -12,6 +15,7 @@ var studentModel = require('../models/studentModel/studentModel');
 var successResponse = require('../models/successResponse');
 var errorResponse = require('../models/errorResponse');
 var Q = require('q');
+//TODO: fix comment: Combine below two lines
 var courseData
 courseData ={
     createCourse : createCourse,
@@ -21,6 +25,7 @@ courseData ={
     studentExists : studentExists
 
 }
+//TODO: fix comment: Remove console logs and commented codes
 function createCourse(req,res){
     console.log("in product toppppppp "+req.query.q)
     console.log(typeof req.query.q);
@@ -38,6 +43,7 @@ function createCourse(req,res){
      query.coach = vm.cCoach;
      query.noStud = vm.noStud;
      * */
+    //TODO: fix comment: Combine all below assignements into single line => courseObject = new CourseModel({couseName: ......})
     courseObject.courseName = query.courseName;
     courseObject.description = query.description;
     courseObject.courseName = query.courseName;
@@ -71,7 +77,7 @@ function enrollStudent(req,res){
     console.log(query);
 
     var student = new studentModel();
-
+    //TODO: fix comment: Same here--combine lines
     student.firstName = query.studentFirstName;
     student.lastName = query.studentLastName;
     student.email = query.studentEmailId;
@@ -87,6 +93,8 @@ function enrollStudent(req,res){
                     console.log(err1);
                     res.send(new errorResponse("error","somehing went wrong",err1));
                 }else {
+                    //TODO: fix comment: For these kind of checks, you need to write a special util method : isEmpty() and make use of that
+                    //In future you can utilize the third party plugin methods for doing this
                     if(response != undefined && response != null){
                         response.availableSlots = response.availableSlots -1;
                         response.save(function(err2){
@@ -121,6 +129,10 @@ function getCourses(req,res){
 
     console.log(req.query);
     console.log(req.body);
+    //TODO: fix comment: You need to move this to another js file and return back with the result. Here below call is not null-safe, So it'l fail.
+    // So The method which you are updating should contain null-safe condition with appropriate populations
+    //IMP: query population should be done at server end not from the client
+    //Here you are querying the database directly with the values provided in query so it may cause the injection attacks
     courseModel.find({}).sort(query.sortingCriteria).populate('courseSlots').skip(query.numberToSkip).limit(query.limitTo)
         .exec(function(err, response){
             if(err){

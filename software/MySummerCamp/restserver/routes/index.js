@@ -9,6 +9,7 @@ var appRouter = function(router){
 
     res.render(path.join(__dirname , '../../client/app/index'));
   });
+  //TODO: fix comment: Instead of writing the separate router for each, you can combine all together in app.js file and redirect directly to course.js
   router.get('/api/course/*',course);
   router.put('/api/course/*',course);
   router.post('/api/course/*',course);

@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mySummerCamp');
 var db = mongoose.connection;
 var dbCollection = db.collections;
-
+//TODO: fix comment: Remove commented lines and console.logs
 /*
  var users = require('./routes/users');
  var productRoute = require('./routes/productRoute');
