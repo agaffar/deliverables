@@ -3,13 +3,14 @@
  */
 (function () {
     'use strict'
-    angular.module('sumCamp.addCourse').factory('courseFactory',['$q','api',
-        function courseFactory($q,api){
+    angular.module('sumCamp.addCourse').factory('courseFactory',['$q','api','$http',
+        function courseFactory($q,api,$http){
         var courseFactory = {
             createCourse : createCourse,
             renderCourseDetails : renderCourseDetails,
             enrollStudent : enrollStudent,
-            checkStudAlreadyEnrolled : checkStudAlreadyEnrolled
+            checkStudAlreadyEnrolled : checkStudAlreadyEnrolled,
+            getCourseSlots : getCourseSlots
         }
         return courseFactory;
             function createCourse(query){
@@ -23,6 +24,17 @@
             }
             function checkStudAlreadyEnrolled(query){
                 return api.checkStudExits({q:query}).$promise;
+            }
+            function getCourseSlots(){
+                var defered = $q.defer();
+                $http({method: 'GET', url: '../../coursSlots.json'}).success(function(data, status, headers, config) {
+                        var courseSlots = data;
+                        defered.resolve(data);
+                }).error(function(data,status){
+                    defered.reject("error");
+                });
+
+                return defered.promise;
             }
     }]);
 

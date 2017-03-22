@@ -2,7 +2,7 @@
     <h2>Add your course Here</h2>
     <br>
     <center>
-        <form class="course-form" name="courseForm" ng-submit="acc.CreateCourse(courseForm.$valid)">
+        <form class="course-form" name="courseForm" ng-submit="acc.createCourse(courseForm.$valid)">
             <div class="row form-group" ng-class="{ 'has-error': courseForm.cName.$dirty && courseForm.cName.$error.required }">
 
                 <label class="col-md-4"  for="cName">Course Name </label>

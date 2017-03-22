@@ -15,7 +15,8 @@
     "angular-bootstrap": "~2.4.0",
     "bootstrap": "^3.3.7",
     "ngstorage": "ng-storage#^0.4.2",
-    "angular-resource": "1.5.5"
+    "angular-resource": "1.5.5",
+    "ngSweetAlert": "angular-sweetalert#^1.1.2"
   },
   "resolutions": {
     "angular": "~1.5.5",

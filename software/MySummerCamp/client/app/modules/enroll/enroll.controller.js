@@ -4,16 +4,14 @@
 (function(){
     'use strict'
     angular.module('sumCamp.enroll').controller('enrollController',enrollController);
-    enrollController.$inject = ['$scope','courseFactory','$stateParams','$state','$window'];
-    function enrollController($scope,courseFactory,$stateParams,$state,$window){
+    enrollController.$inject = ['$scope','courseFactory','$stateParams','$state','$window','SweetAlert'];
+    function enrollController($scope,courseFactory,$stateParams,$state,$window,SweetAlert){
         var vm = this;
         var courseId = $stateParams.courseId;
         vm.studAlreadEnrolled = false;
         vm.studentObject = {};
         vm.enrollStudent = enrollStudent;
         vm.checkStudentExist = checkStudentExist;
-
-        //TODO: fix comment: Initialization of variables first, method declaration next, then method definition
         getCourseDetails(courseId);
         function getCourseDetails(courseId){
             var query = {};
@@ -36,13 +34,16 @@
             query.studentEmailId = vm.emailId;
             checkStudentExist(query.studentEmailId);
             if(vm.studAlreadEnrolled === true){
-                //TODO: fix comment: Going forward you should not use window alerts
-                $window.alert("you are already registered for another course");
+
+                //$window.alert("you are already registered for another course");
+                SweetAlert.swal("you are already registered for another course");
+
             }
             else {
                 //TODO: fix comment: Samething at client end too. Write a utility method to check null-safe
                 if(vm.selectedSlot == undefined || vm.selectedSlot ==null){
-                    $window.alert("select any slot available for you");
+                    //$window.alert("select any slot available for you");
+                    SweetAlert.swal("select any slot available for you");
 
                 }
                 else {
@@ -52,7 +53,7 @@
                     console.log(vm.selectedSlot);
                     courseFactory.enrollStudent(query).then(function(response){
                             if(response.status == "ok"){
-                                alert("you are enrolled succesfully");
+                                SweetAlert.swal("Congrats","you are enrolled succesfully","success");
                                 $state.go('home');
                             }
                         },

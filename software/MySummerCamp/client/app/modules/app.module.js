@@ -8,6 +8,7 @@
         'ui.bootstrap',
         'ngTable',
         'ngResource',
+        'oitozero.ngSweetAlert',
         'sumCamp.header',
         'sumCamp.home',
         'sumCamp.addCourse',
