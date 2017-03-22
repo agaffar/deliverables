@@ -42,7 +42,6 @@
             };
             console.log(item);
             vm.yourOrders.push(item);
-            //loadProductsTable();
             vm.tableParams.reload();
         }
         function loadProductsTable() {
@@ -56,9 +55,10 @@
                     console.log(params)
                     getBill(vm.yourOrders);
                     var filterObj = params.filter(), filteredData = $filter('filter')(vm.yourOrders, filterObj);
-                    console.log(filteredData);
-                    var sortObj = params.sorting(), orderedData = $filter('orderBy')(filteredData, filterObj);
+
+                    var orderedData = $filter('orderBy')(filteredData, params.orderBy());;
                     vm.data = orderedData;
+                    console.log(orderedData);
                     //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
                     return vm.data;
                 }
