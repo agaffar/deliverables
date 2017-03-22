@@ -210,7 +210,7 @@ function studentExists(req,res){
                 res.send(new successResponse("ok",data,{},"success"));
             }
             else {
-                res.send(new errorResponse("error","no data found properly",err));
+                res.send(new errorResponse("error","emailNotExists",err));
             }
 
         }

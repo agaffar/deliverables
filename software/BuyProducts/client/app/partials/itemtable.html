@@ -1,0 +1,41 @@
+<div class="row list-products" ng-if="hc.yourOrders.length>0">
+    <p>List of products in your order</p>
+
+    <table ng-table="hc.tableParams"  show-filter="true" class = "table table-bordered">
+        <tbody>
+
+        <tr ng-repeat="item in $data"> <!--{{readR1}}-->
+            <td title="'product'" filter="{ productName: 'text'}" sortable="'productName'"><span ng-bind="item.productName">{{course}} </span>
+            </td>
+            <td title="'Quantity'" filter="{ quantity: 'number'}" sortable="'quantity'">
+                <select  ng-model="item.quantity" ng-change="hc.updateCost(item)">
+                    <option selected="selected" value="{{item.quantity}}">{{item.quantity}}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td title="'Total'" filter="{ total: 'number'}" sortable="'total'"><span ng-bind="item.totalCost" ></span></td>
+
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                Total
+            </td>
+            <td>
+                <span ng-bind="hc.totalBill"></span>
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+    <button class="btn btn-success glyphicon glyphicon-credit-card" ng-click="hc.proceedPay()"
+            ng-disabled="hc.yourOrders.length == 0">Proceed to Pay</button>
+
+</div>

@@ -8,8 +8,11 @@
     function enrollController($scope,courseFactory,$stateParams,$state,$window){
         var vm = this;
         var courseId = $stateParams.courseId;
+        vm.studAlreadEnrolled = false;
+        vm.studentObject = {};
         vm.enrollStudent = enrollStudent;
         vm.checkStudentExist = checkStudentExist;
+
         //TODO: fix comment: Initialization of variables first, method declaration next, then method definition
         getCourseDetails(courseId);
         vm.uncheck = function (slots) {
@@ -32,10 +35,11 @@
         }
         function enrollStudent(){
             var query = {};
-            query.studentFirstName = vm.fname;
-            query.studentLastName = vm.lname;
+            query.studentFirstName = vm.studentObject.fname;
+            query.studentLastName = vm.studentObject.lname;
             query.studentEmailId = vm.emailId;
-            if(checkStudentExist(query.studentEmailId)){
+            checkStudentExist(query.studentEmailId);
+            if(vm.studAlreadEnrolled === true){
                 //TODO: fix comment: Going forward you should not use window alerts
                 $window.alert("you are already registered for another course");
             }
@@ -64,21 +68,23 @@
             }
 
         }
-        function checkStudentExist(){
-                var query = {};
-                query.emailId = vm.emailId;
+        function checkStudentExist(studEmail){
+            var query = {};
+            query.emailId = studEmail;
             console.log(query);
             courseFactory.checkStudAlreadyEnrolled(query).then(function(response){
-                if(response.status == "ok"){
-                    vm.studAlreadEnrolled = true;
-                }
-                else{
-                    vm.studAlreadEnrolled = false;
-                }
-            },
-            function(data){
+                    console.log(response);
+                    if(response.status == "ok"){
+                        vm.studAlreadEnrolled = true;
+                    }
+                    else{
+                        vm.studAlreadEnrolled = false;
+                    }
+                    console.log(vm.studAlreadEnrolled)
+                },
+                function(data){
 
-            });
+                });
         }
         //TODO: fix comment: In general this should be in utility method, like getObjectByKey(couseSlots, 'KEY=timeSlot', objectToCompare...)
         function getSelectedTimeSlot(courseSlots){
