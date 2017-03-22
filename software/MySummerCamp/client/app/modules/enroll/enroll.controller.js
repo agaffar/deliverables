@@ -34,24 +34,20 @@
             query.studentEmailId = vm.emailId;
             checkStudentExist(query.studentEmailId);
             if(vm.studAlreadEnrolled === true){
-
-                //$window.alert("you are already registered for another course");
                 SweetAlert.swal("you are already registered for another course");
 
             }
             else {
-                //TODO: fix comment: Samething at client end too. Write a utility method to check null-safe
-                if(vm.selectedSlot == undefined || vm.selectedSlot ==null){
-                    //$window.alert("select any slot available for you");
+
+                if(courseFactory.isEmpty(vm.selectedSlot) == true){
                     SweetAlert.swal("select any slot available for you");
 
                 }
                 else {
                     query.timeSlotSelectedId = getSelectedTimeSlot(vm.course.courseSlots);
                     query.courseId = courseId;
-                    console.log(query);
-                    console.log(vm.selectedSlot);
                     courseFactory.enrollStudent(query).then(function(response){
+                        console.log(response);
                             if(response.status == "ok"){
                                 SweetAlert.swal("Congrats","you are enrolled succesfully","success");
                                 $state.go('home');
@@ -83,7 +79,6 @@
 
                 });
         }
-        //TODO: fix comment: In general this should be in utility method, like getObjectByKey(couseSlots, 'KEY=timeSlot', objectToCompare...)
         function getSelectedTimeSlot(courseSlots){
             var slotId = "";
             //console.log(courseSlots);

@@ -27,7 +27,7 @@
                 "courseFee" : vm.cfees,
                 "noStud" : vm.noStud,
             };
-            query.courseSlots = getSelectedSlots(vm.courseSlots);
+            query.courseSlots = courseFactory.getSelectedSlots(vm.courseSlots);
             courseFactory.createCourse(query).then(function(response){
                     if(response.status == "ok"){
                         SweetAlert.swal("Congrats","course added successfully","success");
@@ -40,17 +40,6 @@
 
 
         }
-        function getSelectedSlots(courseSlots){
-            var selectedSlots = [];
-            for(var i =0; i<courseSlots.length;i++){
-                if(courseSlots[i].selected == true){
-                    console.log(courseSlots[i].time);
 
-                    selectedSlots.push(courseSlots[i]);
-                }
-            }
-
-            return selectedSlots;
-        }
     }
 })();

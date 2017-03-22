@@ -12,7 +12,8 @@
         'sumCamp.header',
         'sumCamp.home',
         'sumCamp.addCourse',
-        'sumCamp.enroll'
+        'sumCamp.enroll',
+
 
     ]);
 })();
