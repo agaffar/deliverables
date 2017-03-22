@@ -32,7 +32,7 @@
             <label class="col-md-4" for="emailId">Email Id</label>
             <input class="col-md-4 form-control" type="email" name="lname" id="emailId" ng-model="efc.studEmail" minlength="1" ng-blur="efc.checkStudentExist({studEmail : efc.studEmail})" ng-keyup="efc.checkStudentExist({studEmail : efc.studEmail})" maxlength="500" required>
             <span style="color:red" ng-show="enrollForm.emailId.$dirty && enrollForm.emailId.$error.minlength" ng-class="help-block">minimum length should be 10</span>
-         {{efc.studAlreadEnrolled}}   <span style="color:red" ng-if="efc.studAlreadEnrolled == true">You are already enrolled. Only one course per user</span>
+          <span style="color:red" ng-if="efc.studAlreadEnrolled == true">You are already enrolled. Only one course per user</span>
         </div><br>
         <input type="submit" class="btn btn-success" value="enroll" ng-disabled="efc.studAlreadEnrolled == true || enrollForm.$invalid">
     </form>

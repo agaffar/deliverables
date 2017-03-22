@@ -15,10 +15,6 @@
 
         //TODO: fix comment: Initialization of variables first, method declaration next, then method definition
         getCourseDetails(courseId);
-        vm.uncheck = function (slots) {
-            console.log("slotssss")
-            slots.selected = !slots.selected;
-        }
         function getCourseDetails(courseId){
             var query = {};
             query.courseId = courseId;
@@ -73,14 +69,14 @@
             query.emailId = studEmail;
             console.log(query);
             courseFactory.checkStudAlreadyEnrolled(query).then(function(response){
-                    console.log(response);
+                    //console.log(response);
                     if(response.status == "ok"){
                         vm.studAlreadEnrolled = true;
                     }
                     else{
                         vm.studAlreadEnrolled = false;
                     }
-                    console.log(vm.studAlreadEnrolled)
+                    //console.log(vm.studAlreadEnrolled)
                 },
                 function(data){
 
@@ -89,7 +85,7 @@
         //TODO: fix comment: In general this should be in utility method, like getObjectByKey(couseSlots, 'KEY=timeSlot', objectToCompare...)
         function getSelectedTimeSlot(courseSlots){
             var slotId = "";
-            console.log(courseSlots);
+            //console.log(courseSlots);
             for(var i =0;i<courseSlots.length;i++){
                 if(courseSlots[i].timeSlot == vm.selectedSlot){
                     return courseSlots[i]._id;

@@ -1,0 +1,20 @@
+<div class="coursetable">
+    <button class="btn btn-primary" ng-click="ctc.gotAddCourse()">Add Course</button>
+
+    <table ng-table="ctc.tableParams"  show-filter="true" class = "table table-bordered">
+        <tbody>
+
+        <tr ng-repeat="course in $data"> <!--{{readR1}}-->
+            <td title="'Course Name'" filter="{ courseName: 'text'}" sortable="'courseName'"><span ng-bind="course.courseName">{{course}} </span>
+            </td>
+            <td title="'Course Description'" filter="{ description: 'text'}" sortable="'description'"><span ng-bind="course.description" ></span></td>
+            <td title="'AvailableSeats'" filter="{ availableSeats: 'text'}" sortable="'availableSeats'"><span ng-bind="course.availableSeats" ></span></td>
+            <td title="'No of Days'" filter="{ noOfDays: 'text'}" sortable="'noOfDays'"><span ng-bind="course.noOfDays" ></span></td>
+            <td><button class="btn bg-info" ng-click="ctc.enrollStudent({course : course})" ng-disabled="course.availableSeats == 0">Enroll</button>
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+</div>

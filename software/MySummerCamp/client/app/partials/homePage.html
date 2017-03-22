@@ -1,12 +1,12 @@
 <div class="row">
     <h1>Home Page</h1>
-<div class="coursetable">
+<!--<div class="coursetable">
     <button class="btn btn-primary" ng-click="hc.gotAddCourse()">Add Course</button>
 
     <table ng-table="hc.tableParams"  show-filter="true" class = "table table-bordered">
         <tbody>
 
-        <tr ng-repeat="course in $data"> <!--{{readR1}}-->
+        <tr ng-repeat="course in $data"> &lt;!&ndash;{{readR1}}&ndash;&gt;
             <td title="'Course Name'" filter="{ courseName: 'text'}" sortable="'courseName'"><span ng-bind="course.courseName">{{course}} </span>
             </td>
             <td title="'Course Description'" filter="{ description: 'text'}" sortable="'description'"><span ng-bind="course.description" ></span></td>
@@ -20,5 +20,8 @@
         </tbody>
 
     </table>
-</div>
+</div>-->
+    <course-table table-params="hc.tableParams" got-add-course="hc.gotAddCourse()" enroll-student="hc.enrollStudent(course)">
+
+    </course-table>
 </div>
