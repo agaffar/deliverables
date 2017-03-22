@@ -7,10 +7,7 @@ var appRoute = function(router){
   router.get('/', function(req, res, next) {
     res.render(path.join(__dirname , '../../client/app/index'));
   });
-  router.get('/api/products/*',products);
-  router.post('/api/products/*',products);
-  router.put('/api/products/*',products);
-  router.delete('/api/products/*',products);
+
 
 }
 

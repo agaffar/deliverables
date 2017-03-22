@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var productModel = require('../models/productModel/productModel');
-var commonUtil = require('./commonUtils');
+var commonUtil = require('./../utils/commonUtils');
 var itemModel = require('../models/ItemModel/itemModel');
 var billModel = require('../models/billModel/billModel');
 
@@ -18,14 +18,9 @@ products ={
 
 }
 function searchProduct(req,res){
-    console.log("in product toppppppp "+req.query.q)
-    console.log(typeof req.query.q);
-    var query = (req.query && req.query.q) ? JSON.parse(req.query.q) : req.body.q;
-    console.log(query);
-    console.log("in in user profile type "+query.userId)
 
-    console.log(req.query);
-    console.log(req.body);
+    var query = (req.query && req.query.q) ? JSON.parse(req.query.q) : req.body.q;
+
     var name = query.valueEntered;
     var regex = new RegExp(name,"i");
     productModel.find({name : regex}).exec(function(err,response){
@@ -47,9 +42,7 @@ function searchProduct(req,res){
 
 }
 function payBill(req,res){
-    console.log("in product toppppppp "+req.query.q)
     var query = (req.query && req.query.q) ? JSON.parse(req.query.q) : req.body.q;
-    console.log(query);
     var listItems = query.listItems;
     var promises = [];
     var newBill = new billModel();
@@ -76,10 +69,9 @@ function payBill(req,res){
 
 }
 function getBillDetails(req,res){
-    console.log("in product toppppppp "+req.query.q)
-    console.log(typeof req.query.q);
+
     var query = (req.query && req.query.q) ? JSON.parse(req.query.q) : req.body.q;
-    console.log(query);
+
     var billId = query.billId
     billModel.findOne({_id : billId}).exec(function(err,response){
         if(err){

@@ -11,32 +11,19 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/buyProducts');
 var db = mongoose.connection;
 var dbCollection = db.collections;
-
-/*
- var users = require('./routes/users');
- var productRoute = require('./routes/productRoute');
- */
-
 var app = express();
 
 // view engine setup
 app.engine('html', require('ejs').renderFile);
 app.set('views',path.join(__dirname , '../client/app/partials'));
-/*var pa = path.join(__dirname , '../client/app/partials');
- console.log(pa+"  pa ");*/
-app.set('view engine', 'html');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', index);
-
-
+app.all('/api/products/*',require('./routes/products'));
 index(app);
 
 app.use(express.static(path.join(__dirname, '../client')));

@@ -5,14 +5,19 @@
     'use strict'
     angular.module('buyProd.home').component('itemTable',{
         bindings:{
-            itemList :'=',
+            tableParams :'=',
+            totalBill : '=',
+            yourOrders : '=',
+            proceedPay : '&',
+            updateCost : '&'
         },
-        templateUrl:"app/partials/itemtable.html",
+        templateUrl:"app/partials/item-table.html",
         controller: itemTableController,
         controllerAs:"itc"
     });
     itemTableController.$inject = ['NgTableParams','$filter','$state'];
     function itemTableController(NgTableParams,$filter,$state){
                 var vm = this;
+                console.log(vm);
     }
 })();

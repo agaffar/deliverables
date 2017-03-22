@@ -1,14 +1,14 @@
-<div class="row list-products" ng-if="hc.yourOrders.length>0">
+<div class="row list-products" ng-if="itc.yourOrders.length>0">
     <p>List of products in your order</p>
 
-    <table ng-table="hc.tableParams"  show-filter="true" class = "table table-bordered">
+    <table ng-table="itc.tableParams"  show-filter="true" class = "table table-bordered">
         <tbody>
 
         <tr ng-repeat="item in $data"> <!--{{readR1}}-->
             <td title="'product'" filter="{ productName: 'text'}" sortable="'productName'"><span ng-bind="item.productName">{{course}} </span>
             </td>
             <td title="'Quantity'" filter="{ quantity: 'number'}" sortable="'quantity'">
-                <select  ng-model="item.quantity" ng-change="hc.updateCost(item)">
+                <select  ng-model="item.quantity" ng-change="itc.updateCost({itemC : item})">
                     <option selected="selected" value="{{item.quantity}}">{{item.quantity}}</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -28,14 +28,14 @@
                 Total
             </td>
             <td>
-                <span ng-bind="hc.totalBill"></span>
+                <span ng-bind="itc.totalBill"></span>
             </td>
         </tr>
 
         </tbody>
 
     </table>
-    <button class="btn btn-success glyphicon glyphicon-credit-card" ng-click="hc.proceedPay()"
-            ng-disabled="hc.yourOrders.length == 0">Proceed to Pay</button>
+    <button class="btn btn-success glyphicon glyphicon-credit-card" ng-click="itc.proceedPay()"
+            ng-disabled="itc.yourOrders.length == 0">Proceed to Pay</button>
 
 </div>

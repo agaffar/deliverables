@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="search col-md-6" >
+        <!--{{search.productList}}-->
+        <ui-select ng-model="search.selected" theme='bootstrap' reset-search-input='true' on-select="">
+            <ui-select-match placeholder="Select or search a product ..." > {{ $select.selected.name}}</ui-select-match>
+            <!--minimum-input-length=3 check in future-->
+            <ui-select-choices  refresh="search.refreshProds({selected : $select.search})"
+                                refresh-delay="0"
+                                repeat="prod in search.productList track by prod.name" >
+                <a href="" >{{prod.name}}</a><br>
+                Cost:{{prod.price | currency:'&#8377;'}}
+                Category: <span ng-bind="prod.category" ></span>
+            </ui-select-choices>
+        </ui-select>
+        <span>{{ search.selected.name}}</span>
+    </div>
+    <button class="btn btn-primary glyphicon glyphicon-plus-sign col-md-1" ng-click="search.addProduct({selected : search.selected})">Add</button>
+</div>

@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
-var products = require('../utils/products.util')
+var products = require('../services/products.service.js')
 
 /* GET users listing. */
 router.get('/api/products/searchProduct',products.searchProduct);

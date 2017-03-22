@@ -10,6 +10,7 @@
         vm.productList = [];
         vm.yourOrders = [];
         vm.totalBill = 0;
+        vm.tableParams = {};
         vm.refreshProds = refreshProds;
         vm.addProduct = addProduct;
         vm.updateCost = updateCost;
@@ -71,8 +72,9 @@
             });
         }
         function updateCost(item){
+
             item.totalCost = item.quantity* item.cost;
-            console.log( item.totalCost);
+          
             getBill(vm.yourOrders);
         }
         function proceedPay(){
