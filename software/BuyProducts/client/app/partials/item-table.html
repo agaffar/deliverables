@@ -5,7 +5,7 @@
         <tbody>
 
         <tr ng-repeat="item in $data"> <!--{{readR1}}-->
-            <td title="'product'" filter="{ productName: 'text'}" sortable="'productName'"><span ng-bind="item.productName">{{course}} </span>
+            <td title="'product'" filter="{ productName: 'text'}" sortable="'productName'"><span ng-bind="item.productName"></span>
             </td>
             <td title="'Quantity'" filter="{ quantity: 'number'}" sortable="'quantity'">
                 <select  ng-model="item.quantity" ng-change="itc.updateCost({itemC : item})">

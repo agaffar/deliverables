@@ -15,11 +15,10 @@
         vm.addProduct = addProduct;
         vm.updateCost = updateCost;
         vm.proceedPay = proceedPay;
+        loadProductsTable();
         function refreshProds(valueEntered){
             vm.productList = [];
-
             if(valueEntered.selected != ""){
-                console.log("---");
                 var query = { "valueEntered" : valueEntered.selected  };
                 homeFactory.searchProducts(query).then(function (response) {
                         if(response.status == "ok"){
@@ -43,7 +42,8 @@
             };
             console.log(item);
             vm.yourOrders.push(item);
-            loadProductsTable();
+            //loadProductsTable();
+            vm.tableParams.reload();
         }
         function loadProductsTable() {
             vm.tableParams = new NgTableParams({
@@ -74,7 +74,7 @@
         function updateCost(item){
 
             item.totalCost = item.quantity* item.cost;
-          
+
             getBill(vm.yourOrders);
         }
         function proceedPay(){
