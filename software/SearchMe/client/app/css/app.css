@@ -19,3 +19,15 @@ div.view-content{
 .searchForm input[type=text],.searchForm input[type=number],.searchForm input[type=date]{
     width: 25%;
 }
+div.header{
+    height: 10%;
+    background-color: lightblue;
+}
+div.footer{
+    height: 5%;
+    background-color: #0d3349;
+    color: white;
+    padding: 1em;
+    clear: left;
+    text-align: center;
+}

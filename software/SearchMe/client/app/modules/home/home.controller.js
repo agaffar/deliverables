@@ -31,7 +31,7 @@
                     query.pagination.limito = params.count();
                     query.pagination.sortingCriteria = params.sorting();
 
-                    homeFactory.getSearchedData(query).then(function(response){
+                   return homeFactory.getSearchedData(query).then(function(response){
                             var dataReceived = response.data;
                             var filterObj = params.filter(), filteredData = $filter('filter')(dataReceived, filterObj);
 

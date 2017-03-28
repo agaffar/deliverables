@@ -20,19 +20,21 @@ function getDataSearched(req,res){
     }
     if(query.lname)
     {
-        var lnReg = new RegExp(query.fname,"i");
-        basicDet.push({"lastName" : fnReg})
+        var lnReg = new RegExp(query.lname,"i");
+        basicDet.push({"lastName" : lnReg})
     }
     if(query.dob)
     {
         basicDet.push({"dateOfBirth" : query.dob})
     }
+    console.log(basicDet);
      queryToPerform.push({"$match":{ $or : basicDet}},{ "$unwind": "$addresses" },
          {"$lookup":{"from":"address","localField":"addresses","foreignField":"_id","as":"address"}});
     if(query.address){
         queryToPerform.push({"$match":{$or:[{"address.city":query.address}, {"address.street" : query.address},
             {"address.state" : query.address}]}})
     }
+    console.log(queryToPerform);
     personModel.aggregate(queryToPerform).exec(function(err,users) {
         if (err) {
             console.log(err);
