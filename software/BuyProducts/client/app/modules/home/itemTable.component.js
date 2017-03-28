@@ -18,6 +18,6 @@
     itemTableController.$inject = ['NgTableParams','$filter','$state'];
     function itemTableController(NgTableParams,$filter,$state){
                 var vm = this;
-                console.log(vm);
+
     }
 })();
