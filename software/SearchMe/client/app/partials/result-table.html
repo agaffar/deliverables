@@ -1,0 +1,26 @@
+<div class="row list-products">
+    <p>List of products in your order</p>
+
+    <table ng-table="rtc.tableParams"  show-filter="true" class = "table table-bordered">
+        <tbody>
+
+        <tr ng-repeat="person in $data"> <!--{{readR1}}-->
+            <td title="'First Name'" filter="{ productName: 'text'}" sortable="'firstName'">
+                <span ng-bind="person.firstName"></span>
+            </td>
+            <td title="'Last Name'" filter="{ lastName: 'text'}" sortable="'lastName'">
+                <span ng-bind="person.lastName"></span>
+            </td>
+            <td title="'Dob'" filter="{ dateOfBirth: 'date'}" sortable="'dateOfBirth'">
+                <span ng-bind="person.dateOfBirth" ></span></td>
+            <td title="'Address'" filter="{ addresses: 'text'}" sortable="'addresses'">
+                <span ng-bind="person.addresses" ></span></td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+
+</div>

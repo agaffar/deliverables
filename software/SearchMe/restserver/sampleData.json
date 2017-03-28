@@ -1,0 +1,116 @@
+[
+  {
+    "firstName" : "Abdul",
+    "lastName" : "Gaffar",
+    "dateOfBirth" : "04/19/1994",
+    "addresses" : [{
+      "street" : "kukatpally",
+      "houseNo" : "1109",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "paraspet",
+        "houseNo" : "593/21-2",
+        "city" : "Machilipatnam",
+        "state" : "Andhra Pradesh"
+
+      }
+    ]
+  },
+  {
+    "firstName" : "mohammed",
+    "lastName" : "arif",
+    "dateOfBirth" : "09/02/1996",
+    "addresses" : [{
+      "street" : "KPHB colony",
+      "houseNo" : "193",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "kareemabad",
+        "houseNo" : "202D",
+        "city" : "warangal",
+        "state" : "Telangana"
+
+      }
+    ]
+  },
+  {
+    "firstName" : "divya",
+    "lastName" : "dimpu",
+    "dateOfBirth" : "02/01/1999",
+    "addresses" : [{
+      "street" : "uppal",
+      "houseNo" : "193",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "hnk",
+        "houseNo" : "202D",
+        "city" : "warangal",
+        "state" : "Telangana"
+
+      }
+    ]
+  },
+  {
+    "firstName" : "ram",
+    "lastName" : "ramu",
+    "dateOfBirth" : "02/01/1993",
+    "addresses" : [{
+      "street" : "panjagutta",
+      "houseNo" : "198",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "shivanagar",
+        "houseNo" : "202C",
+        "city" : "warangal",
+        "state" : "Telangana"
+
+      }
+    ]
+  },
+  {
+    "firstName" : "sita",
+    "lastName" : "sit",
+    "dateOfBirth" : "02/01/1982",
+    "addresses" : [{
+      "street" : "Ameerpet",
+      "houseNo" : "208T",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "adv colony",
+        "houseNo" : "202C",
+        "city" : "warangal",
+        "state" : "Telangana"
+
+      }
+    ]
+  },
+  {
+    "firstName" : "laxman",
+    "lastName" : "lucky",
+    "dateOfBirth" : "02/01/1972",
+    "addresses" : [{
+      "street" : "balnagar",
+      "houseNo" : "200A",
+      "city" : "Hyderabad",
+      "state" : "Telangana"
+    },
+      {
+        "street" : "bollikunta",
+        "houseNo" : "202C",
+        "city" : "warangal",
+        "state" : "Telangana"
+
+      }
+    ]
+  }
+]

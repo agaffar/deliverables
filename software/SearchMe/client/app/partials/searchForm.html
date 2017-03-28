@@ -1,0 +1,29 @@
+<div class="row">
+<form name="searchForm" class="searchForm" ng-submit="sfc.submitForm()">
+    <div class="row form-group">
+
+        <label class="col-md-4" for="fname">First Name</label>
+        <input class="col-md-4 form-control" type="text" name="fname" id="fname" ng-model="sfc.user.fname" >
+    </div><br>
+    <div class="row form-group">
+
+        <label class="col-md-4" for="lname">Last Name</label>
+        <input class="col-md-4 form-control" type="text" name="lname" id="lname" ng-model="sfc.user.lname" >
+    </div><br>
+    <div class="row form-group" >
+
+        <label class="col-md-4" for="dob">Date of Birth</label>
+        <input class="col-md-4 form-control" type="date" name="dob" id="dob" ng-model="sfc.user.dob" >
+    </div><br>
+    <div class="row form-group">
+
+        <label class="col-md-4" for="dob">Address</label>
+        <input class="col-md-4 form-control" type="text" name="address" id="address" ng-model="sfc.user.address" >
+    </div><br>
+    <center>
+        <input type="submit" class="btn btn-success" value="Submit">
+        <button class="btn btn-danger">clear</button>
+    </center>
+
+</form>
+</div>

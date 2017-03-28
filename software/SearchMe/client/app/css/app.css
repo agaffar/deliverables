@@ -1,0 +1,21 @@
+div.header{
+    height: 10%;
+    background-color: #00B7FF;
+}
+div.footer{
+    height: 5%;
+    background-color: #7a43b6;
+    color: white;
+    padding: 1em;
+    clear: left;
+    text-align: center;
+}
+
+div.view-content{
+    margin-top : 5px;
+    padding-top: 2%;
+    margin-bottom: 3%;
+}
+.searchForm input[type=text],.searchForm input[type=number],.searchForm input[type=date]{
+    width: 25%;
+}
