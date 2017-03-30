@@ -4,15 +4,15 @@
         <tbody>
 
         <tr ng-repeat="person in $data"> <!--{{readR1}}-->
-            <td title="'First Name'" filter="{ productName: 'text'}" sortable="'firstName'">
+            <td title="'First Name'" filter="{ firstName: 'text'}" sortable="'firstName'">
                 <span ng-bind="person.firstName"></span>
             </td>
             <td title="'Last Name'" filter="{ lastName: 'text'}" sortable="'lastName'">
                 <span ng-bind="person.lastName"></span>
             </td>
-            <td title="'Dob'" filter="{ dateOfBirth: 'date'}" sortable="'dateOfBirth'">
+            <td title="'Dob'" filter="{ dateOfBirth: 'text'}" sortable="'dateOfBirth'">
                 <span ng-bind="person.dateOfBirth" ></span></td>
-            <td title="'Address'" filter="{ addresses: 'text'}" sortable="'addresses'">
+            <td title="'Address'" filter="{ 'addresses.state': 'text'}" sortable="'addresses.state'">
                 <div ng-repeat="addr in person.addresses">
                     <span ng-bind="addr.houseNo"></span><br>
                     <span ng-bind="addr.street"></span><br>

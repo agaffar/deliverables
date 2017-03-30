@@ -16,5 +16,6 @@
     resultTableController.$inject = [];
     function resultTableController(){
         var vm = this;
+
     }
 })();

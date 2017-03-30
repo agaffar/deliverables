@@ -26,7 +26,6 @@
                 page :1,
                 count : 5
             }, {
-
                 counts: [2, 5, 10, 25, 50, 100],
                 getData: function (params) {
                     console.log(params)
@@ -36,17 +35,21 @@
                     query.pagination.sortingCriteria = params.sorting();
 
                    return homeFactory.getSearchedData(query).then(function(response){
-                            var dataReceived = response.data;
-                            var modData = modularized(dataReceived);
-                       console.log(modData);
-                            var filterObj = params.filter(), filteredData = $filter('filter')(modData, filterObj);
+                       if(response.status == "ok"){
+
+                           var dataReceived = response.data;
+                           var modData = modularized(dataReceived);
+                           console.log(modData);
+                           params.total(response.pagination.total);
+                               var filterObj = params.filter(), filteredData = $filter('filter')(modData, filterObj);
                            console.log(filteredData);
 
-                            var orderedData = $filter('orderBy')(filteredData, params.orderBy());
-                            vm.data = orderedData;
-                            console.log(orderedData);
-                            //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-                            return vm.data;
+                           var orderedData = $filter('orderBy')(filteredData, params.orderBy());
+                           vm.data = orderedData;
+                           console.log(orderedData);
+                           //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+                           return vm.data;
+                       }
                         },
                         function(error){
 

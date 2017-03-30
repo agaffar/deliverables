@@ -17,5 +17,11 @@
     });
     function searchFormController(){
         var vm = this;
+        vm.dateOpen =  false;
+        vm.datePopOpened = datePopOpened;
+
+        function datePopOpened(){
+            vm.dateOpen =! vm.dateOpen;
+        }
     }
 })();

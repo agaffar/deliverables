@@ -13,7 +13,16 @@
     <div class="row form-group" >
 
         <label class="col-md-4" for="dob">Date of Birth</label>
-        <input class="col-md-4 form-control" type="date" name="dob" id="dob" ng-model="sfc.user.dob" >
+     <!--   <input class="col-md-4 form-control" type="date" name="dob" id="dob" ng-model="sfc.user.dob" >-->
+        <input  
+               type="text" class="col-md-4 form-control" uib-datepicker-popup="yyyy/MM/dd"
+               ng-model="sfc.user.dob" name="dob" id="dob"
+               is-open="sfc.dateOpen"
+               datepicker-options="dateOptions"
+               close-text="Close" alt-input-formats="altInputFormats" />
+         <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="sfc.datePopOpened()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
     </div><br>
     <div class="row form-group">
 
