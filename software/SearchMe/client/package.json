@@ -6,9 +6,12 @@
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
+    "angular": "^1.6.3",
+    "angular-mocks": "^1.6.3",
+    "angular-ui-router": "^0.4.2",
     "bower": "^1.7.7",
     "http-server": "^0.9.0",
-    "jasmine-core": "^2.4.1",
+    "jasmine-core": "^2.5.2",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",

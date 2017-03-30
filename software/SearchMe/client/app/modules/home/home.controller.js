@@ -29,7 +29,6 @@
                 counts: [2, 5, 10, 25, 50, 100],
                 getData: function (params) {
                     var query = angular.copy(vm.user);
-
                     query.pagination = {};
                     query.pagination.numberToSkip = (params.page() - 1)* params.count();
                     query.pagination.limito = params.count();
