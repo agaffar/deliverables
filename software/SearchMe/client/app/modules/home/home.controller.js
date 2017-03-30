@@ -8,25 +8,28 @@
     function homeController($scope,homeFactory,NgTableParams,$filter){
         var vm = this;
         vm.user = {};
-        vm.tableParams = new NgTableParams({ });
+
         vm.submitForm = submitForm;
         vm.reset = reset;
 
+        loadTable();
         function submitForm(){
-            var query = angular.copy(vm.user);
-            loadTable(query);
+
+        vm.tableParams.reload();
 
         }
         function reset(){
             vm.user = {};
         }
-        function  loadTable(query){
+        function  loadTable(){
             vm.tableParams = new NgTableParams({
                 page :1,
                 count : 5
             }, {
                 counts: [2, 5, 10, 25, 50, 100],
                 getData: function (params) {
+                    var query = angular.copy(vm.user);
+
                     query.pagination = {};
                     query.pagination.numberToSkip = (params.page() - 1)* params.count();
                     query.pagination.limito = params.count();
