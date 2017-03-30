@@ -13,8 +13,7 @@
         vm.reset = reset;
 
         function submitForm(){
-            console.log(vm.user);
-            var query = vm.user;
+            var query = angular.copy(vm.user);
             loadTable(query);
 
         }
@@ -28,28 +27,23 @@
             }, {
                 counts: [2, 5, 10, 25, 50, 100],
                 getData: function (params) {
-                    console.log(params)
                     query.pagination = {};
                     query.pagination.numberToSkip = (params.page() - 1)* params.count();
                     query.pagination.limito = params.count();
                     query.pagination.sortingCriteria = params.sorting();
 
-                   return homeFactory.getSearchedData(query).then(function(response){
-                       if(response.status == "ok"){
+                    return homeFactory.getSearchedData(query).then(function(response){
+                            if(response.status == "ok"){
 
-                           var dataReceived = response.data;
-                           var modData = modularized(dataReceived);
-                           console.log(modData);
-                           params.total(response.pagination.total);
-                               var filterObj = params.filter(), filteredData = $filter('filter')(modData, filterObj);
-                           console.log(filteredData);
-
-                           var orderedData = $filter('orderBy')(filteredData, params.orderBy());
-                           vm.data = orderedData;
-                           console.log(orderedData);
-                           //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-                           return vm.data;
-                       }
+                                var dataReceived = response.data;
+                                var modData = modularized(dataReceived);
+                                params.total(response.pagination.total);
+                                var filterObj = params.filter(), filteredData = $filter('filter')(modData, filterObj);
+                                var orderedData = $filter('orderBy')(filteredData, params.orderBy());
+                                vm.data = orderedData;
+                                //vm.data = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+                                return vm.data;
+                            }
                         },
                         function(error){
 
@@ -69,12 +63,10 @@
                 user.dateOfBirth = eachUser.users.dateOfBirth;
                 user.addresses = [];
                 angular.forEach(eachUser.data,function(eachData){
-                    console.log(eachData);
-                        user.addresses.push(eachData.addr);
+                    user.addresses.push(eachData.addr);
                 })
                 data.push(user);
             });
-            console.log(data);
             return data;
         }
     }

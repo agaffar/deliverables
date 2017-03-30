@@ -16,7 +16,7 @@ div.view-content{
     padding-top: 2%;
     margin-bottom: 3%;
 }
-.searchForm input[type=text],.searchForm input[type=number],.searchForm input[type=date]{
+.search-form input[type=text],.searchForm input[type=number],.searchForm input[type=date]{
     width: 25%;
 }
 div.header{
@@ -30,4 +30,7 @@ div.footer{
     padding: 1em;
     clear: left;
     text-align: center;
+}
+.search-page{
+    margin-top: 5%;
 }

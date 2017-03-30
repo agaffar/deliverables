@@ -11,7 +11,6 @@ var userData = {
 }
 function getDataSearched(req,res){
     var query = (req.query && req.query.q) ? JSON.parse(req.query.q) : req.body.q;
-    console.log(query);
     var queryToPerform = [];
     var basicDet = [];
     if(query.fname)
@@ -29,11 +28,10 @@ function getDataSearched(req,res){
 
         basicDet.push({"dateOfBirth" : new Date(query.dob)})
     }
-    console.log(basicDet);
     if(basicDet.length != 0)
         queryToPerform.push({"$match":{ $or : basicDet}})
-     queryToPerform.push({ "$unwind": "$addresses" },
-         {"$lookup":{"from":"address","localField":"addresses","foreignField":"_id","as":"address"}});
+    queryToPerform.push({ "$unwind": "$addresses" },
+        {"$lookup":{"from":"address","localField":"addresses","foreignField":"_id","as":"address"}});
     if(query.address){
         var addressQuery = new RegExp(query.address,"i");
 
@@ -41,13 +39,14 @@ function getDataSearched(req,res){
             {"address.state" : addressQuery} ]}} )
     }
     queryToPerform.push({"$unwind":"$address"},{"$group":{"_id":"$_id", "data":{"$addToSet":{"addr":"$address",
-        "user":{"_id": "$_id", "firstName" : "$firstName","lastName" : "$lastName",
-            "dateOfBirth" : "$dateOfBirth" }}}}},
+            "user":{"_id": "$_id", "firstName" : "$firstName","lastName" : "$lastName",
+                "dateOfBirth" : "$dateOfBirth" }}}}},
         {"$project":{"data.addr":1, "users":{"$arrayElemAt":["$data.user", 0] }}}
 
     );
     console.log(queryToPerform);
-    personModel.aggregate(queryToPerform).skip(query.pagination.numberToSkip).limit(query.pagination.limito).exec(function(err,users) {
+    personModel.aggregate(queryToPerform).skip(query.pagination.numberToSkip)
+        .limit(query.pagination.limito).exec(function(err,users) {
         if (err) {
             console.log(err);
             res.send(new  errorResponse("error","failed dueto wrong query formation",err));
