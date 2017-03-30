@@ -7,6 +7,7 @@
         bindings:{
             user :'=',
             submitForm : '&',
+            reset : '&'
 
         },
         templateUrl:"app/partials/searchForm.html",

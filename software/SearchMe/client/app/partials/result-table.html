@@ -13,7 +13,12 @@
             <td title="'Dob'" filter="{ dateOfBirth: 'date'}" sortable="'dateOfBirth'">
                 <span ng-bind="person.dateOfBirth" ></span></td>
             <td title="'Address'" filter="{ addresses: 'text'}" sortable="'addresses'">
-                <span ng-bind="person.addresses" ></span></td>
+                <div ng-repeat="addr in person.addresses">
+                    <span ng-bind="addr.houseNo"></span><br>
+                    <span ng-bind="addr.street"></span><br>
+                    <span ng-bind="addr.city"></span><br>
+                    <span ng-bind="addr.state"></span><br><br>
+                </div></td>
 
         </tr>
 

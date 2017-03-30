@@ -10,12 +10,16 @@
         vm.user = {};
         vm.tableParams = new NgTableParams({ });
         vm.submitForm = submitForm;
+        vm.reset = reset;
 
         function submitForm(){
             console.log(vm.user);
             var query = vm.user;
             loadTable(query);
 
+        }
+        function reset(){
+            vm.user = {};
         }
         function  loadTable(query){
             vm.tableParams = new NgTableParams({
@@ -33,7 +37,10 @@
 
                    return homeFactory.getSearchedData(query).then(function(response){
                             var dataReceived = response.data;
-                            var filterObj = params.filter(), filteredData = $filter('filter')(dataReceived, filterObj);
+                            var modData = modularized(dataReceived);
+                       console.log(modData);
+                            var filterObj = params.filter(), filteredData = $filter('filter')(modData, filterObj);
+                           console.log(filteredData);
 
                             var orderedData = $filter('orderBy')(filteredData, params.orderBy());
                             vm.data = orderedData;
@@ -49,6 +56,23 @@
 
             });
 
+        }
+        function modularized(dataReceived){
+            var data = [];
+            angular.forEach(dataReceived,function(eachUser){
+                var user = {};
+                user.firstName = eachUser.users.firstName;
+                user.lastName = eachUser.users.lastName;
+                user.dateOfBirth = eachUser.users.dateOfBirth;
+                user.addresses = [];
+                angular.forEach(eachUser.data,function(eachData){
+                    console.log(eachData);
+                        user.addresses.push(eachData.addr);
+                })
+                data.push(user);
+            });
+            console.log(data);
+            return data;
         }
     }
 })();
