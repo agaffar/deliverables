@@ -8,11 +8,11 @@
     function homeController($scope,homeFactory,NgTableParams,$filter){
         var vm = this;
         vm.user = {};
-
+        vm.data = [];
         vm.submitForm = submitForm;
         vm.reset = reset;
-
-        loadTable();
+        vm.loadTable = loadTable;
+        vm.loadTable();
         function submitForm(){
 
         vm.tableParams.reload();
@@ -28,13 +28,15 @@
             }, {
                 counts: [2, 5, 10, 25, 50, 100],
                 getData: function (params) {
+                    console.log("in get data");
                     var query = angular.copy(vm.user);
                     query.pagination = {};
                     query.pagination.numberToSkip = (params.page() - 1)* params.count();
                     query.pagination.limito = params.count();
                     query.pagination.sortingCriteria = params.sorting();
-
+                    console.log("before getSearchedData..");
                     return homeFactory.getSearchedData(query).then(function(response){
+                            console.log("in searched data");
                             if(response.status == "ok"){
 
                                 var dataReceived = response.data;
@@ -48,7 +50,7 @@
                             }
                         },
                         function(error){
-
+                                console.log("in herrrrrr");
                         });
 
                 }
