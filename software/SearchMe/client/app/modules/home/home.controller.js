@@ -35,10 +35,10 @@
                     query.pagination.limito = params.count();
                     query.pagination.sortingCriteria = params.sorting();
                     console.log("before getSearchedData..");
-                    return homeFactory.getSearchedData(query).then(function(response){
+
+                     return homeFactory.getSearchedData(query).then(function(response){
                             console.log("in searched data");
                             if(response.status == "ok"){
-
                                 var dataReceived = response.data;
                                 var modData = modularized(dataReceived);
                                 params.total(response.pagination.total);
